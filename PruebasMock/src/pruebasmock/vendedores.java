@@ -1,7 +1,7 @@
-
 package pruebasmock;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class vendedores {
 
-   protected ArrayList V = new ArrayList();
+    protected ArrayList V = new ArrayList();
 
     /**
      * recorre el array y si el vendedor existe devuelve false y si delvuelve
@@ -75,28 +75,59 @@ public class vendedores {
      * @param provincia
      * @return
      */
-    public ArrayList<vendedor> buscar_vendedor(String provincia) {
-        ArrayList v = new ArrayList();
-        vendedor c;
+    public vendedores buscar_vendedor(String provincia) {
+        vendedores ven = new vendedores();
+        vendedor v;
+        int c = 0;
         for (int i = 0; i < V.size(); i++) {
-            c = (vendedor) V.get(i);
-            if (c.getProvincia().equals(provincia)) {
-                v.add(c);
-
+            v = (vendedor) V.get(i);
+            if (v.getProvincia().equals(provincia)) {
+                ven.anyadir_vendedor(v);
             }
         }
-        return v;
+        return ven;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 43 * hash + Objects.hashCode(this.V);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final vendedores other = (vendedores) obj;
+        if (!Objects.equals(this.V, other.V)) {
+            return false;
+        }
+        return true;
+    }
+
     /**
      * Cargamos los datos en la base de datos
-     * @param provincia 
+     *
+     * @param provincia
      */
 
     public void cargar_datos(String provincia) {
-        vendedor v1 = new vendedor(1, "Diego", "Die", "Alicante", "Elche", "Av.Alicante");
+        vendedor v1 = new vendedor(1, "Maria", "meri", "Alicante", "Elche", "Av.Ferrocarril");
+        vendedor v2 = new vendedor(2, "David", "da", "Alicante", "Alicante", "Av.Ferrocarril");
+        vendedor v3 = new vendedor(3, "aaron", "aa", "Castellon", "castellon", "avenida");
+        vendedor v4 = new vendedor(4, "Manuel", "manu", "Valencia", "Valencia", "calle castillo");
         V.add(v1);
-        vendedor v2 = new vendedor(2, "Maria", "meri", "Alicante", "Elche", "Av.Ferrocarril");
         V.add(v2);
+        V.add(v3);
+        V.add(v4);
 
     }
 }

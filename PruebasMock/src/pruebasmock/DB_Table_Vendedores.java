@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package pruebasmock;
 
 import java.lang.reflect.Array;
@@ -13,33 +9,64 @@ import java.util.ArrayList;
  * @author Aaron
  */
 public class DB_Table_Vendedores {
+
     protected String conexion;
     protected ArrayList vendedores = new ArrayList();
-    
-    public DB_Table_Vendedores(String conexion){
-        conexion = conexion;
+
+    /**
+     * Devulve la conexion con la base de datos
+     *
+     * @param conexion
+     */
+    public DB_Table_Vendedores(String conexion) {
+        this.conexion = conexion;
     }
-    
-    public boolean anyadir_Vendedor(vendedor v){
+
+    /**
+     * Devuelve si el vendedor se añadio correctamente
+     *
+     * @param v
+     * @return
+     */
+    public boolean anyadir_Vendedor(vendedor v) {
         boolean anyadido = true;
         return anyadido;
     }
-    
-    public boolean modificar_Vendedor(int num_vend,Array modificar){
+
+    /**
+     * Devuvle si el vendedor se modifico correctamente
+     *
+     * @param num_vend
+     * @param modificar
+     * @return
+     */
+    public boolean modificar_Vendedor(int num_vend, Array modificar) {
         boolean mod = true;
         return mod;
     }
-    
-    public boolean borrar_Vendedor(int num_vend){
-        boolean borrar=true;
+
+    /**
+     * Devuelve si el vendedor se borro correctamente
+     *
+     * @param num_vend
+     * @return
+     */
+    public boolean borrar_Vendedor(int num_vend) {
+        boolean borrar = true;
         return borrar;
     }
-    
-    public ArrayList buscar_Vendedor(String provincia){
+
+    /**
+     * Arra List de los vendedores
+     *
+     * @param provincia
+     * @return
+     */
+    public ArrayList buscar_Vendedor(String provincia) {
         return vendedores;
     }
-    
-    public void desconectar(){
-        
+
+    public void desconectar() {
+
     }
 }
